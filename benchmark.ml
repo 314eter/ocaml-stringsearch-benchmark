@@ -11,6 +11,11 @@ type benchmark = {
   patterns : string list;
 }
 
+let () = Random.init 0
+
+let randomstring n =
+  String.init n (fun _ -> Random.int 256 |> char_of_int)
+
 let patternlengths = [1; 2; 3; 4; 5; 6; 7; 8; 9; 10; 12; 15; 20; 30; 45; 65; 90]
 
 let dorian = {
@@ -25,10 +30,10 @@ let wikipedia = {
   patterns = List.map (String.left "Type inference is a technique which allows the compiler to determine from the code the type of each variable and symbol used in the program") patternlengths;
 }
 
-let aab = {
-  name = "aab";
-  text = String.repeat "A" 100000000;
-  patterns = List.map (fun n -> String.repeat "A" (n - 1) ^ "B") patternlengths;
+let random = {
+  name = "random";
+  text = randomstring 100000000;
+  patterns = List.map randomstring patternlengths;
 }
 
 let dna = {
@@ -37,18 +42,19 @@ let dna = {
   patterns = List.map (String.left "CACCTAAAATGTAATCTTACACAGGCTGTAGATTATATCTCTGTTTCCAGGAAGCCCCGTGTGTTGCTTTGTGTGTGCATCAGTCTCTCG") patternlengths;
 }
 
-let () = Random.init 0
-
-let randomstring n =
-  String.init n (fun _ -> Random.int 256 |> char_of_int)
-
-let random = {
-  name = "random";
-  text = randomstring 100000000;
-  patterns = List.map randomstring patternlengths;
+let aab = {
+  name = "aab";
+  text = String.repeat "A" 100000000;
+  patterns = List.map (fun n -> String.repeat "A" (n - 1) ^ "B") patternlengths;
 }
 
-let benchmarks = [dorian; wikipedia; random; dna; aab]
+let baa = {
+  name = "baa";
+  text = String.repeat "A" 100000000;
+  patterns = List.map (fun n -> "B" ^ String.repeat "A" (n - 1)) patternlengths;
+}
+
+let benchmarks = [dorian; wikipedia; random; dna; aab; baa]
 
 let algorithms : (module Algorithm) list = [
   (module Naive);
