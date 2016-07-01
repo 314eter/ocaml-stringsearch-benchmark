@@ -11,51 +11,23 @@ ocamlbuild benchmark.native
 
 ## Algorithms
 
-### Naive
-
-Naive brute-force algorithm.
-
-### Specialized
-
-Specialized naive implementations for patternlengths from 1 to 10.
-
-### Hash
-
-Rabin-Karp algorithm with the sum of the characters as hash sum.
-
-### Horspool
-
-Horspool algorithm.
-
-### Kmp
-
-Knuth-Morris-Pratt algorithm.
-
-### Boyermoore
-
-Boyer-Moore algorithm.
+* Naive brute-force algorithm
+* Hash algorithm: Rabin-Karp with the sum of the characters as hash sum
+* Horspool algorithm
+* Knuth-Morris-Pratt algorithm
+* Boyer-Moore algorithm
+* Twoway algorithm
 
 ## Benchmarks
 
-### Dorian
-
-A copy of _The Picture of Dorian Gray_.
-
-### Wikipedia
-
-A list of Wikipedia articles related to functional programming.
-
-### Random
-
-A string of random characters.
-
-### DNA
-
-Part of the human genome.
-
-### AAB
-
-A string with only `A`'s. The pattern consists of `A`'s with one `B` at the end.
+* A copy of _The Picture of Dorian Gray_
+* A list of Wikipedia articles related to functional programming
+* A string of random characters
+* Part of the human genome
+* Searching for `AAAA...AAAB` in `AAAA...AAAA`
+* Searching for `BAAA...AAAA` in `AAAA...AAAA`
+* Searching for `ABBB...BBBC` in `BBBB...BBBB`
+* Searching for `BBBB...BBAC` in `BBBB...BBBB`
 
 ## Results
 

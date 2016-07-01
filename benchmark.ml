@@ -44,25 +44,37 @@ let dna = {
 
 let aab = {
   name = "aab";
-  text = String.repeat "A" 100000000;
+  text = String.repeat "A" 10000000;
   patterns = List.map (fun n -> String.repeat "A" (n - 1) ^ "B") patternlengths;
 }
 
 let baa = {
   name = "baa";
-  text = String.repeat "A" 100000000;
+  text = String.repeat "A" 10000000;
   patterns = List.map (fun n -> "B" ^ String.repeat "A" (n - 1)) patternlengths;
 }
 
-let benchmarks = [dorian; wikipedia; random; dna; aab; baa]
+let abbc = {
+  name = "abbc";
+  text = String.repeat "B" 10000000;
+  patterns = List.map (fun n -> "A" ^ String.repeat "B" (n - 2) ^ "C") (List.tl patternlengths);
+}
+
+let bbac = {
+  name = "bbac";
+  text = String.repeat "B" 10000000;
+  patterns = List.map (fun n -> String.repeat "B" (n - 2) ^ "AC") (List.tl patternlengths);
+}
+
+let benchmarks = [dorian; wikipedia; random; dna; aab; baa; abbc; bbac]
 
 let algorithms : (module Algorithm) list = [
   (module Naive);
-  (module Specialized);
   (module Hash);
   (module Horspool);
   (module Kmp);
   (module Boyermoore);
+  (module Twoway);
 ]
 
 let time find_all pattern text =

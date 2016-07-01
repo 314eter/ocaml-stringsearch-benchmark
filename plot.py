@@ -14,7 +14,7 @@ colors = {algorithm: cmap(i / len(algorithms))
 
 groups = data.groupby("text")
 
-fig, axes = plt.subplots(nrows=len(texts), ncols=1, figsize=(8, 10))
+fig, axes = plt.subplots(nrows=len(texts), ncols=1, figsize=(8, 16))
 
 for text, axis in zip(texts, axes):
     axis.set_ylabel(text)
@@ -37,5 +37,5 @@ for text, axis in zip(texts, axes):
     axis.set_xticklabels(patternlengths, fontsize='xx-small')
 axis.set_xlabel("patternlength")
 
-plt.tight_layout(rect=(0, 0, 1, 0.9))
+plt.tight_layout(rect=(0, 0, 1, 0.94))
 plt.savefig("benchmark.png")
