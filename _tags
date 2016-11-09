@@ -1,1 +1,1 @@
-true: package(batteries), bin_annot
+true: package(batteries), optimize(3), bin_annot
