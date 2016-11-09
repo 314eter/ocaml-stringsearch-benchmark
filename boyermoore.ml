@@ -1,8 +1,8 @@
 let name = "boyermoore"
 
 let init_bc pattern maxi =
-  let table = Array.make 256 (maxi + 1) in
-  for i = 0 to maxi - 1 do
+  let table = Array.make 256 (-1) in
+  for i = 0 to maxi do
     Array.unsafe_set table (String.unsafe_get pattern i |> int_of_char) i
   done;
   table
@@ -25,7 +25,6 @@ let init_suffixes pattern maxi =
     end
   done;
   suffixes
-
 
 let init_gs pattern maxi =
   let table = Array.make (maxi + 1) (maxi + 1) in
