@@ -5,7 +5,7 @@
 ```sh
 ./download.sh
 ocamlbuild benchmark.native
-./benchmark.native
+./benchmark.native > benchmark.csv
 ./plot.py
 ```
 
